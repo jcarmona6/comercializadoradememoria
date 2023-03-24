@@ -2,3 +2,7 @@
 	path = product-attribute
 	url = https://github.com/OCA/product-attribute.git
 	branch = 15.0
+[submodule "validate_negative_stock"]
+	path = validate_negative_stock
+	url = git@gitlab.com:backendevs-odoo-apps/validate_negative_stock.git
+	branch = 15.0
