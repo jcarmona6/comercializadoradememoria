@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_tree_pos_order_add_invoice" model="ir.ui.view">
+            <field name="name">POS Order</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='partner_id']" position="after">
+                    <field name="account_move"/>
+                </xpath>
+                <xpath expr="//tree/field[@name='state']" position="after">
+                    <field name="session_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

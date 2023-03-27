@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wizard_mass_invoice_pos_order" model="ir.ui.view">
+            <field name="name">Wizard Mass Invoice</field>
+            <field name="model">wizard.mass.invoice</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group col="2">
+                                <field name="start_date"/>
+                            </group>
+                            <group col="2">
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="customer_id"/>
+                        </group>
+                        <field name="pos_order_ids"/>
+                    </sheet>
+                    <footer>
+                        <button name="create_invoice" type="object" string="Create" class="oe_highlight"/>
+                        <button special="cancel" type="object" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_mass_invoice_pos_order_action" model="ir.actions.act_window">
+            <field name="name">POS Invoice</field>
+            <field name="res_model">wizard.mass.invoice</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="POS Invoice" id="menu_wizard_mass_invoice_pos_order"
+                  parent="point_of_sale.menu_point_of_sale"
+                  action="wizard_mass_invoice_pos_order_action" sequence="3"/>
+
+    </data>
+</odoo>
