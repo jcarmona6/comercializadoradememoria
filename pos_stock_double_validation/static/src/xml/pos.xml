@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->   
+<templates id="template" xml:space="preserve">
+    <t t-name="SecondValidationPopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup second-validation-popup">
+                <div class="title validation-title">
+                    <p>Some Products Are Out Of Stock</p>
+                </div>
+                <div class="body validation-body">
+                    <table class="validation-tbl">
+                        <tr>
+                            <th class="validation-th">Product</th>
+                            <th class="validation-th">Ordered</th>
+                            <th class="validation-th">Available</th>
+                        </tr>
+                        <t t-if="props.availability_list">
+                            <t t-foreach="props.availability_list" t-as="l">
+                                <tr>
+                                    <td class="validation-td"><t t-esc="l.name"/></td>
+                                    <td class="validation-td"><t t-esc="l.ordered"/></td>
+                                    <td class="validation-td"><t t-esc="l.available"/></td>
+                                </tr>
+                            </t>
+                        </t>
+                    </table>
+                </div>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="cancel">
+                        Ok
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

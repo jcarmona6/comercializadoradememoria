@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<odoo>
+    <record id="pos_stock_config_form_inherit" model="ir.ui.view">
+        <field name="name">POS configuration</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="pos_stocks.pos_config_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='pos_stocks']/div/div[2]" position="inside">
+                <div class="row" style="margin-top: 10px;">
+                    <label string="POS Stock Double Validation" for="second_validation" class="col-md-5 o_light_label"/>
+                    <field name="second_validation"/>
+                </div>
+                <div class="row" style="margin-top: 10px;" attrs="{'invisible' : [('second_validation', '=', False)]}">
+                    <label string="Apply Check On" for="validation_type" class="col-md-5 o_light_label"/>
+                    <field name="validation_type" attrs="{'required': [('second_validation', '=', True)]}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

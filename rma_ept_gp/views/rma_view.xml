@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record model="ir.ui.view" id="crm_claims_ept_form_view_inherit_gp">
+        <field name="name">crm.claim.ept</field>
+        <field name="model">crm.claim.ept</field>
+        <field name="inherit_id" ref="rma_ept.crm_claims_ept_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page/group" position="before">
+                <group colspan="4" col="4">
+                    <field name="operation_type" attrs="{'invisible' : [('external_reference', '=', False)],'required' : [('external_reference', '!=', False)]}"/>
+                    <field name="external_reference" required="1"/>
+                    <field name="return_item_barcode"  />
+                    <field name="customer_reference_ids" string="Customer References">
+                        <tree editable="bottom">
+                            <field name="name" string="ref"/>
+                        </tree>
+                    </field>
+                    <field name="receipt_number" />
+                    <field name="warehouse_id" />
+                    <field name="journal_id" />
+                </group>
+
+            </xpath>
+            <xpath expr="//field[@name='operation_type']" position='before'>
+                <xpath expr="//field[@name='partner_id']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='picking_id']" position="attributes">
+                <attribute name="attrs">{'required' : [('external_reference', '=', False)]}</attribute>
+                <attribute name="required" />
+            </xpath>
+
+            <xpath expr="//field[@name='email_from']" position="attributes">
+                <attribute name="required" />
+            </xpath>
+            <xpath expr="//field[@name='partner_delivery_id']" position="attributes">
+                <attribute name="required" />
+            </xpath>
+
+            <xpath expr="//field[@name='claim_line_ids']/tree" position="attributes">
+                <attribute name="create" />
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="domain" />
+            </xpath>
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='quantity']" position="after">
+                <field name="unit_price" attrs="{'readonly':[('parent.state','!=','draft')]}" />
+                <field name="subtotal" />
+            </xpath>
+
+            <xpath expr="//button[@name='action_claim_refund_process_ept']" position="replace">
+                <button name="action_claim_refund_process_ept"
+                    attrs="{'invisible':[('parent.state','not in',['process','close'])]}"
+                    icon="fa-cogs"
+                    string="Set product to be replace"
+                    type="object"/>
+            </xpath>
+
+            <xpath expr="//field[@name='description']" position="after">
+                <separator string="Reservas"  groups="backendevs_reservas.group_account_reservas_manager,backendevs_reservas.group_account_reservas_user" />
+                <field name="rma_reservas_ids"  groups="backendevs_reservas.group_account_reservas_manager,backendevs_reservas.group_account_reservas_user"  nolabel="1">
+                    <tree editable="bottom">
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="value" />
+                        <field name="currency_id" />
+                        <field name="sign" />
+                        <field name="marketplace" />
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>
