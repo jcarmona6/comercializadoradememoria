@@ -1,0 +1,25 @@
+/* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) */
+/* See LICENSE file for full copyright and licensing details. */
+/* License URL : <https://store.webkul.com/license.html/> */
+
+.second-validation-popup{
+    height: 310px !important;
+}
+.validation-title{
+    background: white !important; 
+    padding: 2px !important;
+}
+.validation-body{
+    height: 145px;
+    overflow-y: scroll;
+}
+.validation-tbl{
+    width: 100%;
+    margin-top: 10px;
+}
+.validation-th{
+    padding-bottom: 10px;
+}
+.validation-td{
+    padding-bottom: 15px;font-weight: normal;font-size: 16px;
+}
