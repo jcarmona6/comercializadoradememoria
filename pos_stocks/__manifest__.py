@@ -17,7 +17,7 @@
     "name"          :   "POS Stock",
     "summary"       :   """The user can display the product quantities on the Odoo POS with the module. If set, The user cannot add out of stock products to the POS cart.Show product quantity in POS|Out of stock products|Added product quantities|POS product stock|Show stock pos.""",
     "category"      :   "Point of Sale",
-    "version"       :   "1.0.5",
+    "version"       :   "1.0.6",
     "sequence"      :   1,
     "author"        :   "Webkul Software Pvt. Ltd.",
     "license"       :   "Other proprietary",
