@@ -13,7 +13,7 @@
     'name': 'POS Multi Invoice (Enterprise)',
     'summary': 'Create Muliple Invoice of POS Orders (Enterprise)',
     'category': 'Point of Sale',
-    'version': '1.0.0',
+    'version': '1.0.1',
     'author': 'Acespritech Solutions Pvt. Ltd.',
     'website': 'http://www.acespritech.com',
     'sequence': 1,
