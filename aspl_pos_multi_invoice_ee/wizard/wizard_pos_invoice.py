@@ -66,6 +66,7 @@ class WizardMassInvoice(models.TransientModel):
                         'name': each.product_id.name,
                         'quantity': each.qty,
                         'price_unit': each.price_unit,
+                        'product_uom_id': each.product_uom_id.id,
                         'tax_ids': [(6, False, each.tax_ids_after_fiscal_position.ids)],
                         'price_subtotal': each.price_subtotal_incl,
                         'discount': each.discount,
