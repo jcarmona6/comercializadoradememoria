@@ -81,9 +81,6 @@ class CrmClaimEpt(models.Model):
     warehouse_id = fields.Many2one('stock.warehouse', 'Warehouse')
     sale_order_delivery_id = fields.Many2one('sale.order', 'Sale Order Delivery')
 
-    instance_id = fields.Many2one('seller.instance', 'Instance')
-    id_market = fields.Char('ID Market')
-    rma_reservas_ids = fields.One2many('crm.claim.ept.reserves', 'rma_id', 'Extra Reserves')
 
     def get_serial_numbers_from_order(self, order):
         if not order:
@@ -184,15 +181,6 @@ class CrmClaimEpt(models.Model):
 
     def process_claim(self):
         res = super(CrmClaimEpt, self).process_claim()
-        try:
-            for rec in self:
-                for ref in rec.customer_reference_ids:
-                    so_id = self.env['sale.order'].search([('client_order_ref', '=', ref.name),('partner_id', '=', rec.partner_id.id)])
-                    if so_id and so_id[0].instance_id.bots_config_id.send_edi_812:
-                        sp = self.env['stock.picking'].search([('sale_id', '=', so_id.id)])
-                        sp.generate_edi_812()
-        except Exception as e:
-            raise UserError('Something went wrong generating EDI Return: %s' % repr(e))
         return res
 
 
@@ -630,14 +618,3 @@ class CrmClaimEpt(models.Model):
             return True
 
 
-class CrmClaimEptReserves(models.Model):
-    _name = "crm.claim.ept.reserves"
-    _description = "crm.claim.ept.reserves"
-
-    name = fields.Char('Reserve', required = True)
-    value = fields.Float('Value')
-    currency_id = fields.Many2one('res.currency', 'Currency')
-    rma_id = fields.Many2one('crm.claim.ept', 'CRM Claim')
-    description = fields.Char('Description')
-    sign = fields.Selection([('negative', 'Negative'),('positive', 'Positivo')], default = 'positive')
-    marketplace = fields.Selection([('amazon_seller_central',  'Amazon Seller Central'),('walmart_marketplace', 'Walmart Marketplace')], 'Marketplace')
