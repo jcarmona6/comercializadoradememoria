@@ -489,7 +489,7 @@ class CrmClaimEpt(models.Model):
         else:
             self.create_return_picking()
             self.return_picking_id and self.return_picking_id.write({'claim_id': self.id})
-        self.action_rma_send_email()
+        #self.action_rma_send_email()
 
         if not self.picking_id and self.external_reference and self.state == 'approve':
             self.write({'state': 'process'})
