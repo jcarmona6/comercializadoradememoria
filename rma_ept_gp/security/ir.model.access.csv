@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_crm_claim_ept_references,model_crm_claim_ept_references,model_crm_claim_ept_references,rma_ept.group_rma_user_ept,1,1,1,1
-access_crm_claim_ept_reserves,model_crm_claim_ept_reserves,model_crm_claim_ept_reserves,rma_ept.group_rma_user_ept,1,1,1,1
 rma_ept_gp.access_claim_process_wizard,access_claim_process_wizard,rma_ept_gp.model_claim_process_wizard,base.group_user,1,0,0,0
