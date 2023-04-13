@@ -74,7 +74,7 @@ class claim_process_wizard(models.TransientModel):
         claim.write({'reject_message_id':self.reject_message_id.id, 'state':'reject'})
         if self.send_goods_back:
             claim.create_return_picking(claim_line_ids)
-        claim.action_rma_send_email()
+        #claim.action_rma_send_email()
         return True
 
     # def create_return_delivery(self):

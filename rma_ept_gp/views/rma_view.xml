@@ -59,19 +59,6 @@
                     type="object"/>
             </xpath>
 
-            <xpath expr="//field[@name='description']" position="after">
-                <separator string="Reservas"  groups="backendevs_reservas.group_account_reservas_manager,backendevs_reservas.group_account_reservas_user" />
-                <field name="rma_reservas_ids"  groups="backendevs_reservas.group_account_reservas_manager,backendevs_reservas.group_account_reservas_user"  nolabel="1">
-                    <tree editable="bottom">
-                        <field name="name" />
-                        <field name="description" />
-                        <field name="value" />
-                        <field name="currency_id" />
-                        <field name="sign" />
-                        <field name="marketplace" />
-                    </tree>
-                </field>
-            </xpath>
         </field>
     </record>
 </odoo>

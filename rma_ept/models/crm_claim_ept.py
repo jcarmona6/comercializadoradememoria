@@ -546,9 +546,9 @@ class CRMClaim(models.Model):
         This method used to send RMA to customer..
         Added help by Haresh Mori @Emipro Technologies Pvt. Ltd on date 3/2/2020.
         """
-        email_template = self.env.ref('rma_ept.mail_rma_details_notification_ept', False)
-        mail_mail = email_template and email_template.send_mail(self.id) or False
-        mail_mail and self.env['mail.mail'].browse(mail_mail).send()
+        #email_template = self.env.ref('rma_ept.mail_rma_details_notification_ept', False)
+        #mail_mail = email_template and email_template.send_mail(self.id) or False
+        #mail_mail and self.env['mail.mail'].browse(mail_mail).send()
 
     def reject_claim(self, id=False):
         """
