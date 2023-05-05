@@ -52,37 +52,43 @@ odoo.define("pos_stock.models", function (require) {
   product_model.loaded = function (self, products) {
     var temp_this = this;
     var temp_self = self;
-    var product_data = self.db.wk_product_qtys;
-    if (self.config.wk_display_stock && self.config.wk_hide_out_of_stock) {
-      var available_product = [];
-      var product_data = self.db.wk_product_qtys;
-      var data_list = Object.keys(product_data);
-      _.each(products, function (product) {
-        if (data_list.indexOf(product.id.toString()) != -1) {
-          if (product.type == "service") {
-            delete self.db.wk_product_qtys[product.id];
-          }
-          switch (self.config.wk_stock_type) {
-            case "forecasted_qty":
-              if (product.virtual_available > 0 || product.type == "service")
-                available_product.push(product);
-              break;
-            case "virtual_qty":
-              if (
-                product.qty_available - product.outgoing_qty > 0 ||
-                product.type == "service"
-              )
-                available_product.push(product);
-              break;
-            default:
-              if (product.qty_available > 0 || product.type == "service") {
-                available_product.push(product);
-              }
-          }
-        }
-      });
-      products = available_product;
-    }
+
+    // Moved the code to ProductsWidget's productsToDisplay function
+    // -------------------------------------------------------------
+
+    // var product_data = self.db.wk_product_qtys;
+    // if (self.config.wk_display_stock && self.config.wk_hide_out_of_stock) {
+    //   var available_product = [];
+    //   var product_data = self.db.wk_product_qtys;
+    //   var data_list = Object.keys(product_data);
+    //   _.each(products, function (product) {
+    //     if (data_list.indexOf(product.id.toString()) != -1) {
+    //       if (product.type == "service") {
+    //         delete self.db.wk_product_qtys[product.id];
+    //       }
+    //       switch (self.config.wk_stock_type) {
+    //         case "forecasted_qty":
+    //           if (product.virtual_available > 0 || product.type == "service")
+    //             available_product.push(product);
+    //           break;
+    //         case "virtual_qty":
+    //           if (
+    //             product.qty_available - product.outgoing_qty > 0 ||
+    //             product.type == "service"
+    //           )
+    //             available_product.push(product);
+    //           break;
+    //         default:
+    //           if (product.qty_available > 0 || product.type == "service") {
+    //             available_product.push(product);
+    //           }
+    //       }
+    //     }
+    //   });
+    //   products = available_product;
+    // }
+    // -------------------------------------------------------------
+
     self.wk_change_qty_css();
     super_product_loaded.call(temp_this, temp_self, products);
   };
